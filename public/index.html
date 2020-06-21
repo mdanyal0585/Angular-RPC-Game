@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html style="background-color: white;" id="popupContainer">
+  <head>
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+        <!-- Angular Material requires Angular.js Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular-messages.min.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js"></script>
+    <script src="controllers/game.js"></script>
+  </head>
+  <body ng-app="myModule">
+    
+    <!--Turn me into an AngularJS app!-->
+    <h1 class="center-content">Rock Paper Scissors!</h1>
+    <h4 class="center-content" ng-controller="gameController">
+      <a ng-click="showInstructions()" style="cursor: pointer;">How to play</a>
+    </h4>
+    
+    <div class="container" ng-controller="gameController">
+      <div class="column">
+        <div class="row">
+          <div class="col-md-6 center-content">
+            <span class="user">You</span>
+          </div>
+          <div class="col-md-6 center-content">
+            <span class="user">Computer</span>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="player col-md-4 center-content">
+            <div class="btn-group" role="group" aria-label="...">
+              <button type="button" class="btn btn-default" ng-click="setChoice('rock')" ng-style="{'background':rockBtnStyle}">Rock</button>
+              <button type="button" class="btn btn-default" ng-click="setChoice('paper')" ng-style="{'background':paperBtnStyle}">Paper</button>
+              <button type="button" class="btn btn-default" ng-click="setChoice('scissors')" ng-style="{'background':scissorsBtnStyle}">Scissors</button>
+            </div>
+          </div>
+      
+          <div class="play col-md-4 center-content">
+            <button type="button" class="btn btn-success" ng-click="getData()" ng-disabled="disableBtn()">{{ playBtnText }}</button>
+          </div>
+      
+          <div class="computer col-md-4 center-content">
+            <div class="btn-group" role="group" aria-label="...">
+              <button type="button" class="btn btn-default" disabled="disabled">Rock</button>
+              <button type="button" class="btn btn-default" disabled="disabled">Paper</button>
+              <button type="button" class="btn btn-default" disabled="disabled">scissors</button>
+            </div>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="player-score col-md-6 center-content score">
+            <div>Your Score: {{ playerScore }}</div>
+          </div>
+  
+          <div class="computer-score col-md-6 center-content score">
+            <div>Computer Score: {{ computerScore }}</div>
+          </div>
+        </div>
+      </div>
+      <md-progress-circular md-mode="indeterminate" ng-show="isLoading" md-diameter="100" style="position:fixed;bottom:50%;left: 47%;" ></md-progress-circular>
+    </div>
+  </body>
+</html>
